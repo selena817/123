@@ -1,0 +1,14 @@
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\HowManyAutos.exe.config
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\HowManyAutos.exe
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\HowManyAutos.pdb
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\LeagueSharp.Common.dll
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\LeagueSharp.dll
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\SharpDX.dll
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\SharpDX.Toolkit.dll
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\SharpDX.Toolkit.Graphics.dll
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\LeagueSharp.xml
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\SharpDX.Toolkit.xml
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\bin\Debug\SharpDX.Toolkit.Graphics.xml
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\obj\Debug\HowManyAutos.exe
+C:\Users\Selena\Desktop\assem\LeagueSharp\HowManyAutos\obj\Debug\HowManyAutos.pdb

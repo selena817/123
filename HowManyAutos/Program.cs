@@ -10,6 +10,7 @@ namespace HowManyAutos
     class Program
     {
         static Dictionary<int, double> counts;
+        static Obj_AI_Hero attacking;
         static Menu noobmenu;
         static double killme;
         static void Main(string[] args)
@@ -58,32 +59,21 @@ namespace HowManyAutos
 
         static void OnAttack(AttackableUnit unit, AttackableUnit target)
         {
-            Obj_AI_Hero attacking;
-            double AA = 1;
-            if (unit.IsMe && target is Obj_AI_Hero)
+            if (unit.IsMe)
             {
-                attacking = (Obj_AI_Hero)target;
-                if (noobmenu.Item("calccrit").GetValue<bool>())
-                { 
-                    if(Items.HasItem(3031, attacking))
-                    {
-                        AA = attacking.GetAutoAttackDamage(ObjectManager.Player, true) * (1 + attacking.Crit);
-                    }else
-                    {
-                        AA = attacking.GetAutoAttackDamage(ObjectManager.Player, true) * (1 + 1.5 * attacking.Crit);
-                    }
-                }else
+                if (target is Obj_AI_Hero)
                 {
-                    AA = attacking.GetAutoAttackDamage(ObjectManager.Player, true);
+                    attacking = (Obj_AI_Hero)target;
+                } else{
+                    attacking = null;
                 }
-
-                killme = Math.Ceiling(ObjectManager.Player.Health / AA);
             }
         }
 
         static void OnGameUpdate(EventArgs args)
         {
             double AA = 1;
+            double AA2 = 1;
             var player = ObjectManager.Player;
 
             foreach (var enemy in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.IsEnemy && !hero.IsDead))
@@ -104,7 +94,35 @@ namespace HowManyAutos
                     AA = player.GetAutoAttackDamage(enemy, true);
                 }
                 counts[enemy.NetworkId] = Math.Ceiling(enemy.Health / AA);
-            }            
+            }
+
+            if (attacking != null)
+            {
+                if (noobmenu.Item("calccrit").GetValue<bool>())
+                {
+                    if (Items.HasItem(3031, attacking))
+                    {
+                        AA2 = attacking.GetAutoAttackDamage(player, true) * (1 + attacking.Crit);
+                    }
+                    else
+                    {
+                        AA2 = attacking.GetAutoAttackDamage(player, true) * (1 + 1.5 * attacking.Crit);
+                    }
+                }
+                else
+                {
+                    AA2 = attacking.GetAutoAttackDamage(player, true);
+                }
+
+                killme = Math.Ceiling(player.Health / AA2);
+            }
+            else
+            {
+                killme = 0;
+            }
+  
+
+
         }
 
         static void LoadMenu()
@@ -112,7 +130,7 @@ namespace HowManyAutos
             noobmenu = new Menu("How Many Autos", "How Many Autos", true);
             noobmenu.AddItem(new MenuItem("showonenemies", "Show Autos to kill Enemy").SetValue(true));
             noobmenu.AddItem(new MenuItem("showonme", "Show Autos to kill Me").SetValue(true));
-            noobmenu.AddItem(new MenuItem("calccrit", "Include critical damage").SetValue(true));
+            noobmenu.AddItem(new MenuItem("calccrit", "Include critical damage").SetValue(false));
             noobmenu.AddToMainMenu();
         }
     }
